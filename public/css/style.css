@@ -1,0 +1,197 @@
+/* Import da fonte Outfit para Títulos e Geist para parágrafos*/
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap');
+
+
+/* Tirando os elementos padrões do navegador */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+    Determinando cores e fontes padrão
+    Ao invés de ficar digitando cada cor manualmente, chama essas variáveis
+    Ex: background-color: var(--cor-secundaria);
+*/
+:root {
+    /* Cores */
+    --cor-primaria: #8E39E2;
+    --cor-secundaria: #C4B5FD;
+    --cor-logo: #7F49B4;
+    --preto-padrao: #0B1020;
+
+    /* Fontes */
+    --titulo: "Outfit", sans-serif;
+    --paragrafo: "Geist", sans-serif;
+
+    /* Font-weigth */
+    --thin: 100;
+    --extra-light: 200;
+    --light: 300;
+    --regular: 400;
+    --medium: 500;
+    --semi-bold: 600;
+    --bold: 700;
+    --extra-bold: 800;
+    --black: 900;
+}
+
+/* Definindo o body como tela toda */
+body {
+    width: 100vw;
+    height: auto;
+}
+
+
+
+/* NAVBAR - HEADER */
+
+.header {
+    background-color: white;
+    top: 20px;
+    justify-self: center;
+    display: flex;
+    flex-direction: row;
+    width: 97%;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0% 1%;
+    position: fixed;
+    border-radius: 50px;
+}
+
+.container-img {
+    display: flex;
+    width: 20vw;
+    height: 100%;
+    background-image: url(./../assets/logo/BioTrace\ \(4\).png);
+    background-position: 40px center;
+    background-repeat: no-repeat;
+    background-size: auto 80%;
+}
+
+.container-lista {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 100%;
+}
+
+.container-lista li {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 17%;
+    height: 100%;
+}
+
+.container-lista li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    list-style: none;
+    font-family: var(--titulo);
+    text-transform: uppercase;
+    color: var(--preto-padrao);
+    font-weight: var(--medium);
+    transition: all ease-in-out 0.3s;
+}
+
+.container-lista li a:hover {
+    color: var(--cor-primaria);
+    transform: scale(1.1);
+}
+
+.container-lista .linha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--preto-padrao);
+    height:25%;
+    width: 1px;
+}
+
+.container-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    height: 100%;
+    gap: 8%;
+}
+
+.container-btn a {
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65%;
+    border-radius: 50px;
+    font-family: var(--titulo);
+    text-transform: uppercase;
+    font-weight: var(--medium);
+    text-decoration: none;
+    transition: all ease-in-out 0.3s;
+}
+
+.container-btn a:active {
+    transform: scale(0.9);
+}
+
+#btn-login {
+    background-color: white;
+    border: 2px solid var(--cor-primaria);
+    color: var(--cor-primaria);
+    width: 40%;
+}
+
+#btn-cad {
+    background-color: var(--cor-primaria);
+    color: white;
+    width: 45%;
+}
+
+#btn-login:hover {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+#btn-cad:hover {
+    background-color: white;
+    color: var(--cor-primaria);
+    box-shadow: 0px 0px 5px var(--cor-primaria);
+}
+
+
+
+/* MAIN - INÍCIO */
+.container-inicio {
+    width: 100%;
+    height: 100vh;
+}
+
+.content-imagem {
+    width: 100%;
+    height: 100%;
+    background-image: url(./../assets/img/background.svg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.degrade {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #ffff, #ffffff8f, rgba(255, 255, 255, 0.158), rgba(255, 255, 255, 0.158), rgba(255, 255, 255, 0.158), #ffff);
+}
