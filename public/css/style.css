@@ -484,6 +484,102 @@ body {
     color: #4A4A4A;
 }
 
+
+
+
+/* MAIN - SOBRE NÓS */
+.sobre-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 150vh;
+    font-family: var(--titulo);
+    margin-bottom: 10vw;
+}
+
+.sobre-titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobre-titulo p {
+    font-size: 30px;
+    font-family: var(--titulo);
+    color: var(--preto-padrao);
+    font-weight: var(--regular);
+}
+
+.sobre-titulo div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../assets/icons/BioTrace\ \(3\).png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #10B981;
+    width: 14vw;
+    height: 7vh;
+}
+
+.sobre-content {
+    width: 90%;
+    height: 50vh;
+    box-shadow: inset 0px 0px 20px var(--cor-secundaria);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sobre-content h4 {
+    font-size: 32px;
+    text-transform: capitalize;
+    font-weight: var(--semi-bold);
+}
+
+.sobre-content p {
+    max-width: 41vw;
+    text-align: center;
+    font-weight: var(--regular);
+    font-size: 24px;
+}
+
+.sobre-content .icone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: var(--cor-primaria);
+    border-radius: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.historia {
+    background-size: 45%;
+    background-image: url(../assets/icons/historia.svg);
+}
+
+.missao {
+    background-size: 40%;
+    background-image: url(../assets/icons/missao.svg);
+}
+
+.cont-historia {
+    height: 70vh;
+}
+
+
+
+
 /* footer */
 
 .footer {
