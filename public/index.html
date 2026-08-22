@@ -8,65 +8,91 @@
 </head>
 <body>
     <header class="header"> <!-- SESSÃO DA ANA -->
-        <div class="container-img"></div>
-
-        <ul class="container-lista">
-            <li><a href="#1">Início</a></li>
-            <li class="linha"></li>
-            <li><a href="#">Sobre nós</a></li>
-            <li class="linha"></li>
-            <li><a href="#">Solução</a></li>
-            <li class="linha"></li>
-            <li><a href="#">Faq</a></li>
-            <li class="linha"></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-
-        <div class="container-btn">
-            <a href="/home/mat/Projeto---BioTrace/public/login.html" id="btn-login">Login</a>
-            <a href="#" id="btn-cad">Cadastro</a>
+        <div class="navbar">
+            <div class="container-img"></div>
+    
+            <ul class="container-lista">
+                <li><a href="#1">Início</a></li>
+                <li class="linha"></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li class="linha"></li>
+                <li><a href="#">Solução</a></li>
+                <li class="linha"></li>
+                <li><a href="#">Faq</a></li>
+                <li class="linha"></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+    
+            <div class="container-btn">
+                <a href="/home/mat/Projeto---BioTrace/public/login.html" id="btn-login">Login</a>
+                <a href="#" id="btn-cad">Cadastro</a>
+            </div>
         </div>
+            <a href="#" class="header-whatsapp"></a>
     </header>
     <main>
-        <section id="1" class="container-inicio">
+        <div id="1"></div>  
+        <section class="container-inicio">
             <div class="content-imagem">
-                <div class="degrade">
-                    <div>
-                        
+                <div class="filtro-janela">
+                    <div class="degrade">
+                        <div class="inicio-content">
+                            <ul class="inicio-subtitulo">
+                                <li>Tecnologia inteligente para a saúde</li>
+                            </ul>
+                            <div class="inicio-textos">
+                                <h1 class="inicio-titulo">Gestão e monitoramento de leitos em <span class="t-roxo">hospitais</span></h1>
+                                <p class="inicio-paragrafo">Otimize a ocupação hospitalar, reduza o tempo de giro de leitos e garanta a máxima eficiência no atendimento com a nossa solução de telemetria inteligente IoT.</p>
+                            </div>
+                            <a href="#" class="inicio-btn-conheca">Conheça a Bio Trace</a>
+                        </div>
+                        <div class="inicio-dados">
+                            <div class="inicio-dados-infos">
+                                <h1>500K+</h1>
+                                <p>Equipamentos Embarcados</p>
+                            </div>
+                            <div class="inicio-dados-infos">
+                                <h1>99.99%</h1>
+                                <p>Uptime da Plataforma</p>
+                            </div>
+                            <div class="inicio-dados-infos">
+                                <h1>-35%</h1>
+                                <p>Chamadas de Garantia/Suporte</p>
+                            </div>
+                            <div class="inicio-dados-infos">
+                                <h1>25+</h1>
+                                <p>Fabricates Parceiros</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section class="container-componentes">
+            <h2 class="titulo-componentes">Quais componentes monitoramos?</h2>
+
+            <div class="grid-componentes">
+                <div class="card-componente">
+                    <div class="icone-componente icon2"></div>
+                    <h3>CPU</h3>
+                    <p>Por que monitorar a CPU: Evita o superaquecimento e a sobrecarga de processamento. Se a CPU atingir 100% de uso, o sistema trava por completo, congelando as telas e interrompendo as tarefas na hora.</p>
+                </div>
+
+                <div class="card-componente">
+                    <div class="icone-componente icon1"></div>
+                    <h3>Disco</h3>
+                    <p>Por que monitorar o disco: Evita a perda de dados e a lentidão. Quando o espaço fica baixo, o sistema pode travar, corromper arquivos e impedir que aplicativos salvem alterações.</p>
+                </div>
+
+                <div class="card-componente">
+                    <div class="icone-componente icon3"></div>
+                    <h3>Memória RAM</h3>
+                    <p>Por que monitorar a RAM: Previne a lentidão extrema. Se a memória RAM lotar, o computador tenta usar o disco como improviso, deixando os programas lentos, engasgando as funções e fechando aplicativos de repente.</p>
+                </div>
+            </div>
+        </section>
     </main>
-      <section class="container-componentes">
-    <h2 class="titulo-componentes">Quais componentes monitoramos?</h2>
-
-    <div class="grid-componentes">
-        <div class="card-componente">
-            <div class="icone-componente">
-                <img src="./assets/img/icone2.png" alt="Ícone CPU">
-            </div>
-            <h3>CPU</h3>
-            <p>Por que monitorar a CPU: Evita o superaquecimento e a sobrecarga de processamento. Se a CPU atingir 100% de uso, o sistema trava por completo, congelando as telas e interrompendo as tarefas na hora.</p>
-        </div>
-
-        <div class="card-componente">
-            <div class="icone-componente">
-                <img src="./assets/img/icone1.png" alt="Ícone Disco">
-            </div>
-            <h3>Disco</h3>
-            <p>Por que monitorar o disco: Evita a perda de dados e a lentidão. Quando o espaço fica baixo, o sistema pode travar, corromper arquivos e impedir que aplicativos salvem alterações.</p>
-        </div>
-
-        <div class="card-componente">
-            <div class="icone-componente">
-                <img src="./assets/img/icone3.png" alt="Ícone Memória RAM">
-            </div>
-            <h3>Memória RAM</h3>
-            <p>Por que monitorar a RAM: Previne a lentidão extrema. Se a memória RAM lotar, o computador tenta usar o disco como improviso, deixando os programas lentos, engasgando as funções e fechando aplicativos de repente.</p>
-        </div>
-    </div>
-</section>
 
     <footer class="footer">
 
