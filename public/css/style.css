@@ -692,3 +692,125 @@ body {
         align-items: center;
     }
 }
+
+/* SEÇÃO - IMPACTO MENSURÁVEL */
+
+.container-impacto {
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5%;
+    gap: 16px;
+}
+
+.titulo-impacto {
+    font-family: var(--titulo);
+    font-weight: var(--bold);
+    font-size: 2rem;
+    color: var(--preto-padrao);
+    text-align: center;
+}
+
+.titulo-impacto span {
+    color: var(--cor-primaria);
+}
+
+.subtitulo-impacto {
+    font-family: var(--paragrafo);
+    font-weight: var(--regular);
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.grid-impacto {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 30px;
+}
+
+.card-impacto {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    padding: 35px 25px;
+    border-radius: 20px;
+    border: 1px solid #EFEFEF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+    gap: 12px;
+}
+
+.icone-impacto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    margin-bottom: 6px;
+}
+
+.icone-impacto img {
+    width: 22px;
+    height: 22px;
+}
+
+.icone-vermelho {
+    background-color: #FFE1E1;
+}
+
+.icone-verde {
+    background-color: #D9F7E8;
+}
+
+.icone-azul {
+    background-color: #DCE4FF;
+}
+
+.card-impacto h3 {
+    font-family: var(--titulo);
+    font-weight: var(--semi-bold);
+    font-size: 1.1rem;
+}
+
+.titulo-vermelho {
+    color: #F16A6A;
+}
+
+.titulo-verde {
+    color: #3CCB8A;
+}
+
+.titulo-azul {
+    color: #4A6CF7;
+}
+
+.card-impacto p {
+    font-family: var(--paragrafo);
+    font-weight: var(--regular);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #6B6B6B;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .grid-impacto {
+        flex-direction: column;
+        align-items: center;
+    }
+}
