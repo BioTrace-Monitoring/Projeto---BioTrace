@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BioTrace - Login</title>
     <link rel="stylesheet" href="css/style_login.css">
+
+    <script src="js/sessao.js"></script>
 </head>
 <body>
 
     <main class="area-login">
         <section class="cartao-login">
             <div class="logo" aria-label="BioTrace">
-                <span class="logo-b">b</span><span class="logo-t">t</span>
+                <img src="assets/icons/BioTrace (4).png" alt="" class="logo">
             </div>
 
             <h1>Acessar Conta</h1>
@@ -23,7 +25,7 @@
                     <span class="icone">✉</span>
                     <input
                         type="email"
-                        id="email"
+                        id="ipt_email_user"
                         name="email"
                         placeholder="exemplo@email.com"
                     >
@@ -34,14 +36,14 @@
                     <span class="icone">▣</span>
                     <input
                         type="password"
-                        id="senha"
+                        id="ipt_senha_user"
                         name="senha"
                         placeholder="••••••••••••"
                     >
                     <span class="olho">◉</span>
                 </div>
 
-                <button type="submit">Entrar</button>
+                <button onclick="entrar()">Entrar</button>
 
                 <a class="esqueci-senha" href="#">Esqueceu a senha?</a>
             </form>
@@ -52,7 +54,7 @@
         <div class="footer-conteudo">
             <div class="footer-marca">
                 <h2>BioTrace</h2>
-                <p>Tecnologia inteligente, para cada leito.</p>
+                <p>Tecnologia inteligente para cada leito.</p>
             </div>
 
             <div class="footer-coluna">
@@ -93,3 +95,102 @@
 
 </body>
 </html>
+
+
+<script>
+
+    function entrar()
+    {
+        // função que realiza o login do usuário
+
+        var emailVar = ipt_email_user.value; // captura email digitado no input
+        var senhaVar = ipt_senha_user.value; // captura senha digitada no input
+
+        // valida se algum campo está vazio
+        if (emailVar == "" || senhaVar == "")
+        {
+            alert(`Verifique campos em branco`)
+            return false;
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        //document.getElementById("div_aguardar").style.display = "block";
+
+        // Faz a requisição
+        // quando o servidor responder
+        // verifica se deu ok
+        // converte o conteúdo
+        // usa os dados
+        // se qualquer coisa der errado no caminho -> cai no catch
+        fetch("/usuario/autenticar-usuario",
+        {
+            method: "POST", // define método HTTP como POST para envio de dados
+            headers: {
+                "Content-Type": "application/json" // informa que o corpo da requisição está em JSON
+            },
+            body: JSON.stringify({
+                // converte os dados JS para JSON para envio ao backend
+
+                emailServer: emailVar, // envia email
+                senhaServer: senhaVar // envia senha
+            })
+        }).then(function (resposta)
+        {
+            // trata resposta do backend após login
+
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            // login autorizado
+            if (resposta.ok)
+            {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    // converte resposta em JSON
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email; // armazena email na sessão
+                    sessionStorage.NOME_USUARIO = json.nome; // armazena nome na sessão
+                    sessionStorage.ID_USUARIO = json.id; // armazena id na sessão
+
+                    alert("Cadastro realizado com sucesso!")
+
+                    // redireciona para página inicial após login
+                    /*setTimeout(function ()
+                    {
+                        window.location = "inicio.html";
+                        alert(`Seja bem vindo(a), ${sessionStorage.NOME_USUARIO}`)
+                    }, 1000);*/ // apenas para exibir o loading
+
+                    console.log("SALVEI:", sessionStorage);
+                });
+
+            }
+            
+            else
+            {
+                // caso login falhe
+                resposta.text().then(texto => {
+                    // Esconde o loading se der erro
+                    //document.getElementById("div_aguardar").style.display = "none";
+
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro)
+        {
+            // Esconde o loading se cair no catch
+            //document.getElementById("div_aguardar").style.display = "none";
+
+            // erro na requisição
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>
