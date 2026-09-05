@@ -48,6 +48,9 @@ body {
 
 
 /* NAVBAR - HEADER */
+html { /* Essa parte faz a transição suave ao navegar*/
+  scroll-behavior: smooth;
+}
 
 .header {
     width: 100%;
@@ -200,7 +203,81 @@ body {
     background-image: url(../assets/icons/whatsapp-preto.svg);
     box-shadow: 0px 0px 10px #10B981;
 }
+/* Responsividade header */
+@media (max-width: 1440px) {
+    .navbar {
+        height: 100px;
+        width: 97%;
+        
+    }
+    .container-lista {
+        flex-wrap: wrap;
+        font-size: 14px;
+        height: min-content;
+        width: 70%;
+        gap: 3%;
+    }
+    .container-lista .linha {
+        display: none;
+    }
+    .container-lista li {
+        padding: 10px;
+        border-radius: 100px;
+        border: 1px solid black;
+        width: 100px;
+    }
+    .container-img {
+        height: 80px;
+    }
+    #btn-login {
+        font-size: 0px;
+        background-image: url(./../assets/img/icon-login.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 50%;
+        width: 70px;
+        height: 70px;
+    }
+    .header-whatsapp {
+        left: 85%;
+        top: 80vh;
+    }
+}
 
+@media (max-width: 768px) {
+    .container-lista {
+        display: none;
+    }
+    .container-img {
+        background-image: url(./../assets/icons/BioTrace\ \(3\).png);
+        width: 50%;
+        height: 100%;
+        background-size: contain;
+    }
+    .navbar {
+        height: 80px;
+    }
+    #btn-login {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-whatsapp {
+        left: 70%;
+        top: 80vh;
+    }
+    .container-img {
+        height: 100px;
+    }
+    .container-img {
+        background-image: url(./../assets/icons/BioTrace\ \(4\).png);
+        width: 50%;
+        height: 50%;
+        background-size: contain;
+    }
+}
 
 
 /* MAIN - INÍCIO */
@@ -380,6 +457,86 @@ body {
     color: white;
 }
 
+/* Responsividade início */
+@media (max-width: 1440px) {
+    .inicio-content {
+        gap: 5%;
+        height: 60vh;
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .filtro-janela {
+        background-image: url(./../assets/img/filtro-nojanela.svg);
+    }
+    .inicio-titulo {
+        font-size: 36px;
+    }
+    .inicio-paragrafo {
+        font-size: 20px;
+    }
+    .inicio-dados-infos {
+        text-align: center;
+    }
+    .inicio-dados-infos h1 {
+        font-size: 32px;
+    }
+    .inicio-dados-infos p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-inicio {
+        height: 150vh;
+    }
+    .degrade {
+        padding-top: 20%;
+    }
+    .inicio-dados {
+        flex-wrap: wrap;
+        height: max-content;
+        width: max-content;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .inicio-btn-conheca {
+        background-image: none;
+        align-items: center;
+        justify-content: center;
+        padding: 3% 10%;
+        font-size: 20px;
+    }
+    .inicio-btn-conheca:hover {
+        background-image: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .container-inicio {
+        height: 200vh;
+    }
+    .degrade {
+        padding-top: 40%;
+        gap: 100px;
+    }
+    .inicio-dados {
+        width: 80%;
+        height: 50%;
+        gap: 10px;
+        border-radius: 50px;
+    }
+    .inicio-dados-infos {
+        flex-direction: column;
+        width: 80%;
+        height: 100px;
+    }
+    .inicio-subtitulo {
+        font-size: 12px;
+    }
+}
+
 
 
 
@@ -486,6 +643,15 @@ body {
     color: #4A4A4A;
 }
 
+@media (max-width: 700px) {
+    .grid-componentes {
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        gap: 30px;
+    }
+}
+
 
 
 
@@ -515,7 +681,7 @@ body {
     font-weight: var(--regular);
 }
 
-.sobre-titulo div {
+.sobre-titulo .logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -549,7 +715,7 @@ body {
     max-width: 41vw;
     text-align: center;
     font-weight: var(--regular);
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .sobre-content .icone {
@@ -578,6 +744,51 @@ body {
 .cont-historia {
     height: 70vh;
 }
+
+/* Responsividade sobre-nos */
+@media (max-width: 1440px) {
+    .sobre-content .icone {
+        width: 60px;
+        height: 60px;
+    }
+    .sobre-titulo .logo {
+        width: 30vw;
+        height: 10vh;
+    }
+    .sobre-content {
+        height: 80vh;
+    }
+    .sobre-container {
+        height: 200vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .sobre-content {
+        height: 40vh;
+    }
+    .sobre-content h4 {
+        font-size: 26px;
+    }
+
+    .sobre-content p {
+        font-size: 16px;
+        max-width: 70vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .sobre-content {
+        height: 80vh;
+    }
+    .sobre-titulo .logo {
+        width: 50vw;
+        height: 10vh;
+    }
+}
+
+
+
 
 
 /* EQUIPE BIOTRACE SEÇÃO*/
@@ -786,7 +997,12 @@ body {
 .svg4 {background-image: url("../assets/icons/4.svg"); background-size: contain; background-repeat: no-repeat;}
 .svg5 {background-image: url("../assets/icons/5.svg"); background-size: contain; background-repeat: no-repeat;}
 .svg6 {background-image: url("../assets/icons/6.svg"); background-size: contain; background-repeat: no-repeat;}
-    /* perguntas */
+
+
+
+
+
+/* perguntas */
 
 .faq-sessao {
     width: 100%;
@@ -1059,9 +1275,9 @@ body {
 
 /* RESPONSIVO */
 @media (max-width: 900px) {
-    .grid-componentes {
+    .footer-conteudo {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 }
 
