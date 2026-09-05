@@ -450,31 +450,24 @@
 
 </html>
 <script>
+
     let botoesFaq = document.querySelectorAll(".faq-botao");
 
-for (let i = 0; i < botoesFaq.length; i++) {
-
+ for (let i = 0; i < botoesFaq.length; i++) {
     botoesFaq[i].addEventListener("click", function () {
 
         let card = botoesFaq[i].parentElement.parentElement;
         let resposta = card.querySelector(".faq-resposta");
 
         if (resposta.style.display === "block") {
-
             resposta.style.display = "none";
-
             botoesFaq[i].innerHTML = "+";
-
             card.classList.remove("aberto");
 
         } else {
-
             resposta.style.display = "block";
-
             botoesFaq[i].innerHTML = "−";
-
             card.classList.add("aberto");
-
         }
 
     });
