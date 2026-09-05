@@ -50,21 +50,21 @@
                             </div>
                             <a href="#5" class="inicio-btn-conheca">Conheça a Bio Trace</a>
                         </div>
-                        <div class="inicio-dados">
-                            <div class="inicio-dados-infos">
-                                <h1>500K+</h1>
+                        <div class="inicio-dados enario-estatisticas">
+                            <div class="inicio-dados-infos estatistica">
+                                <h1>+<span  class="estatistica-numero" data-alvo="500K"></span>K</h1>
                                 <p>Equipamentos Embarcados</p>
                             </div>
-                            <div class="inicio-dados-infos">
-                                <h1>+90%</h1>
+                            <div class="inicio-dados-infos estatistica">
+                                <h1>+<span  class="estatistica-numero" data-alvo="90"></span>%</h1>
                                 <p>Uptime da Plataforma</p>
                             </div>
-                            <div class="inicio-dados-infos">
-                                <h1>-35%</h1>
+                            <div class="inicio-dados-infos estatistica">
+                                <h1>-<span  class="estatistica-numero" data-alvo="35"></span>%</h1>
                                 <p>Chamadas de Garantia/Suporte</p>
                             </div>
-                            <div class="inicio-dados-infos">
-                                <h1>25+</h1>
+                            <div class="inicio-dados-infos estatistica">
+                                <h1><span  class="estatistica-numero" data-alvo="25"></span>+</h1>
                                 <p>Fabricantes Parceiros</p>
                             </div>
                         </div>
@@ -470,5 +470,63 @@
     </footer>
     <div id="5"></div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Constante que pega o número dentro da classe .estatistica-numero[data-alvo] que está no <h1> e adiciona em uma Array
+        const numeros = document.querySelectorAll('.estatistica-numero[data-alvo]');
+        // Se a tag estiver vazia, ele não executa nada
+        if (numeros.length === 0) return;
 
+        // Formata os valores
+        const formatarNumero = (valor) => {
+            // Constante que formata o número para o padrão basileiro (com ponto)
+            return valor.toLocaleString('pt-BR');
+        };
+
+        
+        const animarNumero = (elemento) => {
+            const alvoTexto = elemento.getAttribute('data-alvo');
+            const prefixo = alvoTexto.match(/^\D*/)[0]; // ex: "+"
+            const valorFinal = parseInt(alvoTexto.replace(/\D/g, ''), 10);
+            const duracao = 1600;
+            let inicio = null;
+
+            const easeOutQuad = (t) => t * (2 - t);
+
+            const passo = (timestamp) => {
+                if (inicio === null) inicio = timestamp;
+                const progresso = Math.min((timestamp - inicio) / duracao, 1);
+                const valorAtual = Math.floor(easeOutQuad(progresso) * valorFinal);
+                elemento.textContent = prefixo + formatarNumero(valorAtual);
+
+                if (progresso < 1) {
+                    requestAnimationFrame(passo);
+                } else {
+                    elemento.textContent = prefixo + formatarNumero(valorFinal);
+                }
+            };
+
+            requestAnimationFrame(passo);
+        };
+
+        if (!('IntersectionObserver' in window)) {
+            numeros.forEach(animarNumero);
+            return;
+        }
+
+        const observadorNumeros = new IntersectionObserver(
+            (entradas) => {
+                entradas.forEach((entrada) => {
+                    if (entrada.isIntersecting) {
+                        animarNumero(entrada.target);
+                        observadorNumeros.unobserve(entrada.target);
+                    }
+                });
+            },
+            { threshold: 0.4 }
+        );
+
+        numeros.forEach((el) => observadorNumeros.observe(el));
+    });
+</script>
 </html>
