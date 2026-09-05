@@ -1074,28 +1074,26 @@ html { /* Essa parte faz a transição suave ao navegar*/
 }
 
 .faq-planos {
-    width: 47%;
+    width: 100%;
     background-color: white;
     border: 1px solid #eeeeee;
     border-radius: 20px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
     overflow: hidden;
     transition: all 0.3s ease;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 2%;
-    display: flex;
 }
 
-.faq-funcionamento {
+.faq-planos.aberto {
     border-color: #d9baff;
     box-shadow: 0px 5px 25px rgba(142, 57, 226, 0.08);
 }
 
+
 .faq-pergunta {
-    width: 50%;
+    width: 100%;
     min-height: 78px;
     padding: 0 25px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1107,6 +1105,7 @@ html { /* Essa parte faz a transição suave ao navegar*/
     font-size: 1.05rem;
     font-weight: var(--medium);
     color: var(--preto-padrao);
+    margin: 0;
 }
 
 .faq-botao {
@@ -1126,7 +1125,7 @@ html { /* Essa parte faz a transição suave ao navegar*/
     transition: all 0.3s ease;
 }
 
-.faq-planos .faq-botao {
+.faq-planos.aberto .faq-botao {
     background-color: var(--cor-primaria);
     border-color: var(--cor-primaria);
     color: white;
@@ -1138,17 +1137,14 @@ html { /* Essa parte faz a transição suave ao navegar*/
     color: var(--cor-primaria);
 }
 
-.faq-planos .faq-botao:hover {
+.faq-planos.aberto .faq-botao:hover {
     color: white;
 }
 
 .faq-resposta {
     display: none;
     padding: 0 25px 25px 25px;
-}
-
-.faq-planos .faq-resposta {
-    display: block;
+    box-sizing: border-box;
 }
 
 .faq-resposta p {
@@ -1158,6 +1154,7 @@ html { /* Essa parte faz a transição suave ao navegar*/
     line-height: 1.6;
     border-top: 1px solid #eeeeee;
     padding-top: 18px;
+    margin: 0;
 }
 
 @media (max-width: 900px) {
