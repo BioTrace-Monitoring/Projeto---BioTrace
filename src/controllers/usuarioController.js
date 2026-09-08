@@ -62,7 +62,8 @@ function autenticarUsuario(req, res)
                     // Nenhum usuário encontrado
                     else if (resultadoAutenticar.length == 0)
                     {
-                        res.status(403).send("Email e/ou senha inválido(s)");
+                        // 401 - senha ou o login estão ausentes, incorretos ou expirados
+                        res.status(401).send("Email e/ou senha inválido(s)");
                     }
                     
                     else
