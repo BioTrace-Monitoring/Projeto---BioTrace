@@ -246,9 +246,9 @@ button:hover {
     text-decoration: none;
 }
 
-/* CELULAR */
+/* RESPONSIVIDADE (CELULAR) */
 
-@media (max-width: 700px) {
+@media (max-width: 1024px) {
     .area-login {
         min-height: 650px;
         padding: 40px 18px;
