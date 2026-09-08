@@ -1029,7 +1029,7 @@ html { /* Essa parte faz a transição suave ao navegar*/
 }
 
 .solucao-content {
-    width: 70%;
+    width: 60%;
     max-width: 1300px;
     display: flex;
     flex-direction: column;
@@ -1084,6 +1084,29 @@ html { /* Essa parte faz a transição suave ao navegar*/
 .svg6 {background-image: url("../assets/icons/6.svg"); background-size: 100% 100%; background-repeat: no-repeat;}
 
 /* Responsividade Solução */
+
+@media (max-width: 2560px) {
+    .solucao-content{
+        width: 45%;
+    }
+}
+
+@media (max-width: 1920px){
+    .solucao-content{
+        width: 60%;
+    }
+    .solucao-box {
+        width: 50%;
+        height: 300px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .solucao-box{
+        width: 60%;
+        height: 320px;
+    }
+}
 
 @media (max-width: 1024px) {
     .solucao-content{
@@ -1166,6 +1189,13 @@ html { /* Essa parte faz a transição suave ao navegar*/
 
     .solucao-titulo .sub-titulo {
         font-size: 15px;
+    }
+}
+
+@media (max-width: 390px){
+    .solucao-box{
+        width: 90%;
+        height: 190px;
     }
 }
 
