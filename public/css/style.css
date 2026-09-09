@@ -1004,6 +1004,7 @@ html { /* Essa parte faz a transição suave ao navegar*/
 
 /* perguntas */
 
+
 .faq-sessao {
     width: 100%;
     display: flex;
@@ -1158,11 +1159,15 @@ html { /* Essa parte faz a transição suave ao navegar*/
 }
 
 @media (max-width: 900px) {
-    .container-faq {padding: 80px 5%;}
+    .faq-sessao {padding:120px  5% 80px;}
+    .faq-titulo {margin-bottom: 20px;}
     .faq-titulo h2 {font-size: 1.7rem;}
+    .faq-titulo p {font-size: 0.95rem;}
+    .faq-lista {max-width: 700px;}  
     .faq-pergunta {padding: 0 20px;}
-    .faq-resposta {padding: 0 20px 20px 20px;}
-
+    .faq-pergunta h3 {font-size: 1rem;}
+    .faq-botao {min-width: 36px;}
+    .faq-resposta {padding: 0 20px 20px 20px;} 
 }
 
 /* footer */
