@@ -1,8 +1,7 @@
-// Importando o usuarioModel
+// Importando o empresaModel
 var empresaModel = require("../models/empresaModel");
 
-
-// Função que cadastra um novo user
+// Função que cadastra uma nova empresa
 function cadastrarEmpresa(req, res)
 {
     // Recuperando os dados enviados pelo form
@@ -18,12 +17,12 @@ function cadastrarEmpresa(req, res)
     // Validando pra que nenhum dado venha vazio
     if (razao_social == undefined)
     {
-        res.status(400).send("Seu nome está undefined!");
+        res.status(400).send("Razão Social está undefined!");
     }
 
     else if (cnpj == undefined)
     {
-        res.status(400).send("Seu CNPJ de nascimento está undefined!");
+        res.status(400).send("Seu CNPJ está undefined!");
     }
     
     else if (telefone == undefined)
@@ -65,11 +64,9 @@ function cadastrarEmpresa(req, res)
                 function (resultado)
                 {
                     console.log("Empresa cadastrada!");
-                    console.log("ID da empresa:", resultado.insertId);
-
 
                     // Retorna o resultado para o front-end em formato JSON
-                    res.json({idEmpresa: resultado.insertId});
+                    res.json(resultado);
                 }
             // Executado quando tem algum erro durante o cadastro
             ).catch(
@@ -89,11 +86,57 @@ function cadastrarEmpresa(req, res)
     // FLUXO:
     // front envia os dados
     // controller recebe e valida os dados
-    // model faz INSERT e banco salva o user
+    // model faz INSERT e banco salva a empresa
     // resultado volta pro controller
     // controller envia resultado pro front
 }
 
+function visualizarEmpresa(req, res)
+{
+    // req -> requisição: Possui todas as informações da requisição
+    // res -> resposta: Retornar uma resposta pro usuario
+
+
+    // Chama a função do model que executa o SELECT no banco
+    empresaModel.visualizarEmpresa()
+        .then(
+            function(resultado)
+            {
+                // Verifica se algum registro foi encontrado
+                if (resultado.length > 0)
+                {
+                    // Retorna os dados encontrados em JSON
+                    res.json(resultado);
+                }
+                
+                else
+                {
+                    res.status(204).send("Nenhuma empresa encontrada!")
+                }
+            }
+        )
+        // Executado caso erro na consulta
+        .catch(
+            function(erro)
+            {
+                console.log(erro);
+
+                console.log(
+                    "\nHouve um erro ao listar as empresas! Erro: ",
+                    erro.sqlMessage
+                );
+
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+    // FLUXO:
+    // front solicita os dados
+    // controller recebe a requisição
+    // model faz SELECT e banco retorna dados
+    // controller verifica se encontrou registros
+    // controller envia resultado pro front
+}
 
 
 
@@ -101,5 +144,6 @@ function cadastrarEmpresa(req, res)
 // Outros arquivos podem usar essas funções
 module.exports =
 {
-    cadastrarEmpresa
+    cadastrarEmpresa,
+    visualizarEmpresa
 }
