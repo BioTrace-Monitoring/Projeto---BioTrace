@@ -8,13 +8,15 @@ function validarSessao()
 
     // Elementos do header onde o nome e email do user são exibidos
     var b_usuario = document.getElementById("b_usuario");
-    var b_email = document.getElementById("b_email");
+    var b_usuario_cliente = document.getElementById("b_usuario_cliente");
+    //var b_email = document.getElementById("b_email");
 
     // Se houver sessão ativa, exibe os dados do usuário na tela
     if (email != null && nome != null)
     {
         b_usuario.innerHTML = nome;
-        b_email.innerHTML = email;
+        b_usuario_cliente.innerHTML += nome + "!";
+        //b_email.innerHTML = email;
     }
     
     // Sem sessão ativa: redireciona para o login

@@ -20,7 +20,7 @@ function autenticarUsuario(req, res)
     
     else if (senha == undefined)
     {
-        res.status(400).send("Sua senha está indefinida!");
+        res.status(400).send("Sua senha está undefined!");
     }
     
     else
@@ -56,6 +56,8 @@ function autenticarUsuario(req, res)
                             id: resultadoAutenticar[0].id,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
+                            nivel_acesso: resultadoAutenticar[0].nivel_acesso,
+                            fk_empresa: resultadoAutenticar[0].fk_empresa,
                         });
                     }
                     
@@ -176,7 +178,7 @@ function cadastrarUsuario(req, res)
     // controller envia resultado pro front
 }
 
-
+/*
 
 
 // Função que busca os dados de um user
@@ -217,7 +219,7 @@ function visualizarUsuario(req, res)
     // controller envia resultado pro front
 }
 
-
+*/
 
 
 
