@@ -46,17 +46,15 @@ router.post("/autenticar-empresa", function (req, res)
 
 // ROTA GET para visualizar os dados um empresa
 // GET para buscar dados do servidor
-router.get("/visualizar-empresa/:fkempresa", function (req, res)
+router.get("/visualizar-empresa", function (req, res)
 {
     // Chamando a função visualizarempresa do empresaController.js
-
-    // :fkempresa -> parâmetro de rota, o valor será dinâmico dependendo do empresa logado
 
     // req -> requisição: Possui todas as informações da requisição
     // res -> resposta: Retornar uma resposta pro empresa
 
     // Direcionando a requisição pro controller responsavel
-    empresaController.visualizarempresa(req, res);
+    empresaController.visualizarEmpresa(req, res);
 })
 
 
