@@ -33,7 +33,7 @@
 
                 <label for="senha">Senha</label>
                 <div class="campo">
-                    <span class="icone">▣</span>
+                    <span class="icone">🗝</span>
                     <input
                         type="password"
                         id="ipt_senha_user"
@@ -43,7 +43,7 @@
                     <span class="olho">◉</span>
                 </div>
 
-                <button onclick="entrar()">Entrar</button>
+                <button type="button" onclick="entrar()">Entrar</button>
 
                 <a class="esqueci-senha" href="#">Esqueceu a senha?</a>
             </form>
@@ -102,7 +102,6 @@
     function entrar()
     {
         // função que realiza o login do usuário
-
         var emailVar = ipt_email_user.value; // captura email digitado no input
         var senhaVar = ipt_senha_user.value; // captura senha digitada no input
 
@@ -155,15 +154,15 @@
                     sessionStorage.EMAIL_USUARIO = json.email; // armazena email na sessão
                     sessionStorage.NOME_USUARIO = json.nome; // armazena nome na sessão
                     sessionStorage.ID_USUARIO = json.id; // armazena id na sessão
-
-                    alert("Cadastro realizado com sucesso!")
+                    sessionStorage.NIVEL_ACESSO = json.nivel_acesso;
+                    sessionStorage.FK_EMPRESA = json.fk_empresa;
 
                     // redireciona para página inicial após login
-                    /*setTimeout(function ()
+                    setTimeout(function ()
                     {
                         window.location = "inicio.html";
                         alert(`Seja bem vindo(a), ${sessionStorage.NOME_USUARIO}`)
-                    }, 1000);*/ // apenas para exibir o loading
+                    }, 1000); // apenas para exibir o loading
 
                     console.log("SALVEI:", sessionStorage);
                 });
