@@ -8,7 +8,7 @@ function cadastrarEmpresa(req, res)
     // Recuperando os dados enviados pelo form
     var razao_social = req.body.razaoSocialEmpresaServer;
     var cnpj = req.body.cnpjEmpresaServer;
-    var celular = req.body.celularComercialEmpresaServer;
+    var telefone = req.body.telefoneComercialEmpresaServer;
     var cep = req.body.cepEmpresaServer;
     var cidade = req.body.cidadeEmpresaServer;
     var logradouro = req.body.logradouroEmpresaServer;
@@ -26,9 +26,9 @@ function cadastrarEmpresa(req, res)
         res.status(400).send("Seu CNPJ de nascimento está undefined!");
     }
     
-    else if (celular == undefined)
+    else if (telefone == undefined)
     {
-        res.status(400).send("Seu celular comercial está undefined!");
+        res.status(400).send("Seu telefone comercial está undefined!");
     }
     
     else if (cep == undefined)
@@ -59,7 +59,7 @@ function cadastrarEmpresa(req, res)
     else
     {
         // Chama a função do model que executa o INSERT no banco
-        empresaModel.cadastrarEmpresa(razao_social, cnpj, celular, cep, cidade, logradouro, bairro, numero)
+        empresaModel.cadastrarEmpresa(razao_social, cnpj, telefone, cep, cidade, logradouro, bairro, numero)
             // Executado quando o cadastro ocorre com sucesso
             .then(
                 function (resultado)

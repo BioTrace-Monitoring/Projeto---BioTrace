@@ -100,7 +100,7 @@ function cadastrarUsuario(req, res)
     // Recuperando os dados enviados pelo form
     var nome = req.body.nomeUserServer;
     var dt_nasc = req.body.nascimentoUserServer;
-    var celular = req.body.celularUserServer;
+    var telefone = req.body.telefoneUserServer;
     var cpf = req.body.cpfUserServer;
     var email = req.body.emailUserServer;
     var senha = req.body.senhaUserServer;
@@ -117,9 +117,9 @@ function cadastrarUsuario(req, res)
         res.status(400).send("Sua data de nascimento está undefined!");
     }
     
-    else if (celular == undefined)
+    else if (telefone == undefined)
     {
-        res.status(400).send("Seu celular está undefined!");
+        res.status(400).send("Seu telefone está undefined!");
     }
     
     else if (cpf == undefined)
@@ -145,7 +145,7 @@ function cadastrarUsuario(req, res)
     else
     {
         // Chama a função do model que executa o INSERT no banco
-        usuarioModel.cadastrarUsuario(nome, dt_nasc, celular, cpf, email, senha, idEmpresa)
+        usuarioModel.cadastrarUsuario(nome, dt_nasc, telefone, cpf, email, senha, idEmpresa)
             // Executado quando o cadastro ocorre com sucesso
             .then(
                 function (resultado)

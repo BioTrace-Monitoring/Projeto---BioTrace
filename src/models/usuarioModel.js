@@ -29,14 +29,14 @@ function autenticarUsuario(email, senha)
 
 
 // Função que cadastra um novo usuário
-function cadastrarUsuario(nome, dt_nasc, celular, cpf, email, senha, idEmpresa)
+function cadastrarUsuario(nome, dt_nasc, telefone, cpf, email, senha, idEmpresa)
 {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarUsuario():", nome, dt_nasc, celular, cpf, email, senha);
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarUsuario():", nome, dt_nasc, telefone, cpf, email, senha);
     
     // Insert que insere um novo usuário na tabela usuario
     var instrucaoSql = `
-        INSERT INTO usuario(nome_usuario, dt_nasc_usuario, celular_usuario, cpf_usuario, email_usuario, senha_usuario, fk_empresa, fk_nivel_acesso) VALUES
-        ('${nome}', '${dt_nasc}', '${celular}', '${cpf}', '${email}', '${senha}', '${idEmpresa}', 1);
+        INSERT INTO usuario(nome_usuario, dt_nasc_usuario, telefone_usuario, cpf_usuario, email_usuario, senha_usuario, fk_empresa, fk_nivel_acesso) VALUES
+        ('${nome}', '${dt_nasc}', '${telefone}', '${cpf}', '${email}', '${senha}', '${idEmpresa}', 1);
     `;
 
     // Exibe a query montada no terminal

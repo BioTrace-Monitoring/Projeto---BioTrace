@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Document</title>
+    <title>BioTrace | Cadastro</title>
 
     <script src="js/sessao.js"></script>
     <script src="js/main.js" defer></script>
@@ -57,8 +57,8 @@
                         </div>
 
                         <div class="campo-cad">
-                            <label for="">Celular comercial</label>
-                            <input type="text" inputmode="numeric" id="ipt_celular_empresa" placeholder="(00) 00 00000-0000" maxlength="10">
+                            <label for="">Telefone comercial</label>
+                            <input type="text" inputmode="numeric" id="ipt_telefone_empresa" placeholder="(00) 00 00000-0000" maxlength="10">
                         </div>
                     </div>
 
@@ -108,8 +108,8 @@
                         </div>
 
                         <div class="campo-cad">
-                            <label for="">Celular</label>
-                            <input type="text" id="ipt_celular_user" inputmode="numeric" placeholder="(00) 00000-0000" maxlength="11">
+                            <label for="">Telefone</label>
+                            <input type="text" id="ipt_telefone_user" inputmode="numeric" placeholder="(00) 00000-0000" maxlength="11">
                         </div>
                     </div>
 
@@ -202,18 +202,18 @@
     {
         var razaoSocialEmpresaVar = ipt_razao_social_empresa.value;
         var cnpjEmpresaVar = ipt_cnpj_empresa.value;
-        var celularComercialEmpresaVar = ipt_celular_empresa.value;
+        var telefoneComercialEmpresaVar = ipt_telefone_empresa.value;
         var cepEmpresaVar = ipt_cep_empresa.value;
         var cidadeEmpresaVar = ipt_cidade_empresa.value;
         var logradouroEmpresaVar = ipt_endereco_empresa.value;
         var bairroEmpresaVar = ipt_bairro_empresa.value;
         var numeroEnderecoEmpresaVar = ipt_numero_empresa.value;
 
-        console.log(razaoSocialEmpresaVar, cnpjEmpresaVar, celularComercialEmpresaVar, cepEmpresaVar,
+        console.log(razaoSocialEmpresaVar, cnpjEmpresaVar, telefoneComercialEmpresaVar, cepEmpresaVar,
                     cidadeEmpresaVar, logradouroEmpresaVar, bairroEmpresaVar, numeroEnderecoEmpresaVar);
 
         // Verificações
-        if (razaoSocialEmpresaVar == "" || cnpjEmpresaVar == "" || celularComercialEmpresaVar == "" || cepEmpresaVar == "" ||
+        if (razaoSocialEmpresaVar == "" || cnpjEmpresaVar == "" || telefoneComercialEmpresaVar == "" || cepEmpresaVar == "" ||
             cidadeEmpresaVar == "" || logradouroEmpresaVar == "" || bairroEmpresaVar == "" || numeroEnderecoEmpresaVar == ""
         )
         {
@@ -246,7 +246,7 @@
                     
                     razaoSocialEmpresaServer: razaoSocialEmpresaVar,
                     cnpjEmpresaServer: cnpjEmpresaVar,
-                    celularComercialEmpresaServer: celularComercialEmpresaVar,
+                    telefoneComercialEmpresaServer: telefoneComercialEmpresaVar,
                     cepEmpresaServer: cepEmpresaVar,
                     cidadeEmpresaServer: cidadeEmpresaVar,
                     logradouroEmpresaServer: logradouroEmpresaVar,
@@ -317,17 +317,17 @@
         // reorganiza a data para formato AAAA-MM-DD (como deve ser pra inserir uma data no mysql)
         var nascimentoUserVar = ano + `-` + mes + `-` + dia;
 
-        var celularUserVar = ipt_celular_user.value;
+        var telefoneUserVar = ipt_telefone_user.value;
         var cpfUserVar = ipt_cpf_user.value;
         var emailUserVar = ipt_email_user.value;
         var senhaUserVar = ipt_senha_user.value;
         var confirmacaoSenhaUserVar = ipt_conf_senha_user.value;
 
-        console.log(nomeUserVar, nascimentoUserVar, celularUserVar, cpfUserVar,
+        console.log(nomeUserVar, nascimentoUserVar, telefoneUserVar, cpfUserVar,
                     emailUserVar, senhaUserVar, confirmacaoSenhaUserVar);
 
         // Verificações
-        if (nomeUserVar == "" || nascimentoUserVar == "" || celularUserVar == "" || cpfUserVar == "" ||
+        if (nomeUserVar == "" || nascimentoUserVar == "" || telefoneUserVar == "" || cpfUserVar == "" ||
             emailUserVar == "" || senhaUserVar == "" || confirmacaoSenhaUserVar == "")
         {
             alert(`Verifique campos em branco`);
@@ -383,7 +383,7 @@
                     
                     nomeUserServer: nomeUserVar,
                     nascimentoUserServer: nascimentoUserVar,
-                    celularUserServer: celularUserVar,
+                    telefoneUserServer: telefoneUserVar,
                     cpfUserServer: cpfUserVar,
                     emailUserServer: emailUserVar,
                     senhaUserServer: senhaUserVar,
