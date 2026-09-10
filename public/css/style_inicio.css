@@ -232,3 +232,76 @@ tbody td
     font-size: 16px; /* Tamanho da escrita*/
     color: #6B6B76; /* Cor do texto*/
 }
+
+
+   /* RESPONSIVIDADE UNIFICADA */
+
+
+@media (max-width: 768px) {
+
+    .cabecalho {
+        padding: 12px 16px;
+    }
+
+    .logo-biotrace {
+        width: 36px;
+        height: 36px;
+    }
+
+    .cabecalho-logo-texto h1 {
+        font-size: 14px;
+    }
+
+    .btn-sair {
+        padding: 6px 10px;
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+ 
+    .container-inicio {
+        padding: 24px 16px 40px;
+    }
+
+    .cabecalho-inicio {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .cabecalho-inicio h2 {
+        font-size: 22px;
+    }
+
+    .btn-cadastrar-empresa {
+        width: 100%;
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .card-tabela {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    thead th,
+    tbody td {
+        white-space: nowrap;
+    }
+
+    .container-cliente {
+        padding: 60px 16px 40px;
+    }
+
+    .principal h1 {
+        font-size: 24px;
+    }
+
+    .principal p {
+        font-size: 14px;
+    }
+}
