@@ -3,94 +3,59 @@ var usuarioModel = require("../models/usuarioModel");
 
 
 // Função que autentica um usuário
-function autenticarUsuario(req, res)
-{
-    // req -> requisição: Possui todas as informações da requisição
-    // res -> resposta: Retornar uma resposta pro usuario
-
+function autenticarUsuario(req, res) {
     // Recuperando os dados enviados pelo front-end
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
     // Validando se os dados foram recebidos corretamente
-    if (email == undefined)
-    {
+    if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    }
-    
-    else if (senha == undefined)
-    {
+    } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    }
-    
-    else
-    {
+    } else {
         // Chama a função do model que consulta o banco de dados
         usuarioModel.autenticarUsuario(email, senha)
             // then() é executado quando a consulta é feita com sucesso
-            .then(
-                // then()
+            .then((resultadoAutenticar) => {
+                console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`); // qtd de registros encontrados
+                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
-                // O método database.executar() do model retorna uma Promise
+                // Se encontrou um usuário
+                if (resultadoAutenticar.length == 1) {
+                    console.log(resultadoAutenticar);
 
-                // Promises são utilizadas para lidar com operações que podem demorar
-                // pra serem concluídas, como as consultas do banco
-                // O código dentro do then() só será executado quando a consulta terminar com sucesso.
-                
-                // Contém os dados retornados pela consulta SQL
-                function (resultadoAutenticar)
-                {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`); // qtd de registros encontrados
-
-                    // JSON.stringify() -> transforma um objeto JSON em texto pra facilitar a visualização no terminal
-
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
-
-                    // Se encontrou um usuário
-                    if (resultadoAutenticar.length == 1)
-                    {
-                        console.log(resultadoAutenticar);
-
-                        // Retorna os dados para o front-end no formato JSON
-                        res.json({
-                            id: resultadoAutenticar[0].id,
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
-                            nivel_acesso: resultadoAutenticar[0].nivel_acesso,
-                            fk_empresa: resultadoAutenticar[0].fk_empresa,
-                        });
-                    }
-                    
-                    // Nenhum usuário encontrado
-                    else if (resultadoAutenticar.length == 0)
-                    {
-                        // 401 - senha ou o login estão ausentes, incorretos ou expirados
-                        res.status(401).send("Email e/ou senha inválido(s)");
-                    }
-                    
-                    else
-                    {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
+                    res.json({
+                        id: resultadoAutenticar[0].id,
+                        email: resultadoAutenticar[0].email,
+                        nome: resultadoAutenticar[0].nome,
+                        id_empresa: resultadoAutenticar[0].fk_empresa,
+                    });
+                } else if (resultadoAutenticar.length == 0) {
+                    res.status(401).send("Email e/ou senha inválido(s)");
+                } else {
+                    res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                 }
-
-            // catch() é executado quando falha na execução da promise
-            ).catch(
-                function (erro)
-                {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+            }).catch( function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
     }
+}
 
-    // FLUXO:
-    // front envia email e senha
-    // controller recebe e valida os dados e chama o model
-    // model consulta o banco
-    // resultado volta pro controller
-    // controller envia resultado pro front
+function obterPermissoesUsuario(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    usuarioModel.obterPermissoesUsuario(idUsuario)
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao obter as permissões do usuário! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 
@@ -178,51 +143,6 @@ function cadastrarUsuario(req, res)
     // controller envia resultado pro front
 }
 
-/*
-
-
-// Função que busca os dados de um user
-function visualizarUsuario(req, res)
-{
-    var fkUsuario = req.params.fkUsuario;
-
-    // Chama a função do model que executa o SELECT no banco
-    usuarioModel.visualizarUsuario(fkUsuario)
-    .then(function (resultado)
-    {
-        // Verifica se algum registro foi encontrado
-        if (resultado.length > 0)
-        {
-            // Retorna os dados encontrados em JSON
-            res.status(200).json(resultado);
-            console.log(resultado);
-        }
-        
-        else
-        {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    
-    // Executado caso erro na consulta
-    }).catch(function (erro)
-    {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as preferências: ", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-
-    // FLUXO:
-    // front solicita os dados
-    // controller recebe fkUsuario
-    // model faz SELECT e banco retorna dados
-    // controller verifica se encontrou registros
-    // controller envia resultado pro front
-}
-
-*/
-
-
-
 
 // Exportando as funções do controller
 // Outros arquivos podem usar essas funções
@@ -230,5 +150,6 @@ module.exports =
 {
     autenticarUsuario,
     cadastrarUsuario,
+    obterPermissoesUsuario,
     //visualizarUsuario
 }
